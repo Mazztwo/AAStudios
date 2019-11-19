@@ -3,7 +3,7 @@
 
 ToDo
 
-- [ ] Set up project on GitHub
+- [x] Set up project on GitHub
 - [ ] Stage to stand on
 - [ ] Squares to jump
 - [ ] Collision detection
