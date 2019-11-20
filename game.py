@@ -1,13 +1,13 @@
 from enum import Enum
-import pygame as pygrame
+import pygame as pg
 import sys
-pygrame.init()
+pg.init()
 
 colors = {
-    "BLACK" : pygrame.Color(0, 0, 0),
-    "RED"   : pygrame.Color(228, 59, 59),
-    "BLUE"  : pygrame.Color(81, 72, 208),
-    "GREEN" : pygrame.Color(48, 139, 57)
+    "BLACK" : pg.Color(0, 0, 0),
+    "RED"   : pg.Color(228, 59, 59),
+    "BLUE"  : pg.Color(81, 72, 208),
+    "GREEN" : pg.Color(48, 139, 57)
 }
 
 class Fighter:
@@ -16,7 +16,7 @@ class Fighter:
         self.rect = rect
 
     def draw(self, surface):
-        pygrame.draw.rect(surface, self.color, self.rect)
+        pg.draw.rect(surface, self.color, self.rect)
 
 class Ground:
     def __init__(self, color, rect):
@@ -24,19 +24,19 @@ class Ground:
         self.rect = rect
 
     def draw(self, surface):
-        pygrame.draw.rect(surface, self.color, self.rect)
+        pg.draw.rect(surface, self.color, self.rect)
 
 def game_loop():
-    screen = pygrame.display.set_mode((500, 400))
-    clock = pygrame.time.Clock()
+    screen = pg.display.set_mode((500, 400))
+    clock = pg.time.Clock()
 
-    ground = Ground(colors["RED"], pygrame.Rect(50, 250, 400, 100))
-    fighter1 = Fighter(colors["BLUE"], pygrame.Rect(60, 210, 25, 40))
-    fighter2 = Fighter(colors["GREEN"], pygrame.Rect(400, 210, 25, 40))
+    ground = Ground(colors["RED"], pg.Rect(50, 250, 400, 100))
+    fighter1 = Fighter(colors["BLUE"], pg.Rect(60, 210, 25, 40))
+    fighter2 = Fighter(colors["GREEN"], pg.Rect(400, 210, 25, 40))
     while True:
         clock.tick(60)
-        for event in pygrame.event.get():
-            if event.type is pygrame.QUIT:
+        for event in pg.event.get():
+            if event.type is pg.QUIT:
                 sys.exit()
 
         # TODO: Optimize so that we clear only a portion of the screen
@@ -45,7 +45,7 @@ def game_loop():
         fighter1.draw(screen)
         fighter2.draw(screen)
         ground.draw(screen)
-        pygrame.display.flip()
+        pg.display.flip()
 
 def main():
     game_loop()
