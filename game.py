@@ -21,8 +21,6 @@ def game_loop():
         ground.draw(screen)
         pygrame.display.flip()
 
-        
-
 def main():
     game_loop()
 
