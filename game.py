@@ -21,14 +21,20 @@ class Ground:
 
 def game_loop():
     screen = pygrame.display.set_mode((500, 400))
+    clock = pygrame.time.Clock()
+
     ground = Ground(pygrame.Color(228, 59, 59), pygrame.Rect(50, 250, 400, 100))
     fighter1 = Fighter(pygrame.Color(81, 72, 208), pygrame.Rect(60, 210, 25, 40))
     fighter2 = Fighter(pygrame.Color(48, 139, 57), pygrame.Rect(400, 210, 25, 40))
     while True:
+        clock.tick(60)
         for event in pygrame.event.get():
             if event.type is pygrame.QUIT:
                 sys.exit()
-        
+
+        # TODO: Optimize so that we clear only a portion of the screen
+        # rather than the entire screen.
+        screen.fill(pygrame.Color(0, 0, 0))
         fighter1.draw(screen)
         fighter2.draw(screen)
         ground.draw(screen)
