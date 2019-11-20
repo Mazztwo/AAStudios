@@ -5,8 +5,8 @@ pygrame.init()
 
 class Ground:
     def __init__(self, color, rect):
-        self.rect = rect
         self.color = color
+        self.rect = rect
 
     def draw(self, surface):
         pygrame.draw.rect(surface, self.color, self.rect)
